@@ -1,1 +1,1 @@
-web: gunicorn hello:app --workers $WEB_CONCURRENCY
+web: gunicorn hello:app
