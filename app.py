@@ -1,12 +1,14 @@
 import os
 from flask import Flask, render_template, send_from_directory
 import urllib2
+import json
+from tracker import trackBuses
 from bs4 import BeautifulSoup
 
 # initialization
 app = Flask(__name__)
 app.config.update(
-    DEBUG = True,
+    DEBUG = True
 )
 
 # controllers
@@ -22,12 +24,14 @@ def page_not_found(e):
 def index():
     return render_template('index.html')
 
-@app.route("/map")
-def index():
-
-    return render_template('map.html')
+@app.route("/process")
+def process():
+    buses = trackBuses("S1","1")
+    with open('data/S1.json', 'w') as fp:
+      json.dump(buses, fp)
+    return render_template('index.html')
 
 # launch
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 4000))
     app.run(host='0.0.0.0', port=port)

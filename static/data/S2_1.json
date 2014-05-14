@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"geometry": {"type": "Point", "coordinates": [-1.4784130917219371, 51.789952989633115]}, "type": "Feature", "properties": {"destination": "Carterton", "service": "S2", "approaching": {"name": "Staple Hall", "area": "Witney"}}}]}

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
-{% block title %} - Home{% endblock %}
+{% block title %} - Map{% endblock %}
+{% block header %}
+    <link href="static/css/main.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="static/js/mapper.js"></script>
+{% endblock %}
+
 {% block content %}
-{% if not session.logged_in %}
-     <p>You are not logged in.</p>
-{% else %}
-     <p>You are logged in.</p>
-{% endif %}
+    <div id="map-canvas"></div>
 {% endblock %}
