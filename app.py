@@ -1,5 +1,7 @@
 import os
 from flask import Flask, render_template, send_from_directory
+import urllib2
+from bs4 import BeautifulSoup
 
 # initialization
 app = Flask(__name__)
@@ -19,6 +21,11 @@ def page_not_found(e):
 @app.route("/")
 def index():
     return render_template('index.html')
+
+@app.route("/map")
+def index():
+
+    return render_template('map.html')
 
 # launch
 if __name__ == "__main__":
