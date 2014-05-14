@@ -6,12 +6,16 @@ from tracker import *
 from bs4 import BeautifulSoup
 from nocache import nocache
 import time, threading
+from multiprocessing import Pool
 
 # initialization
 app = Flask(__name__)
 app.config.update(
     DEBUG = True
 )
+
+def ended():
+  print "Cron ended!"
 
 def mycron(sid):
     print "Creating new JSON files"
@@ -43,7 +47,7 @@ def process():
 
 # launch
 if __name__ == "__main__":
+    pool = Pool(processes=1)
+    result = pool.apply_async(mycron, ["S1"], callback=ended)
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
-    mycron("S1")
-    mycron("S2")
