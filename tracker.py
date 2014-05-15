@@ -5,8 +5,17 @@ import os2ll
 from os2ll import grid2latlon
 from bs4 import BeautifulSoup
 
+def busURL(sid,direction):
+  both_sids = ["2","2A","2B","2C","2D", "3", "3B", "8", "9"]
+  obc_sids = ["300", "400", "500", "4", "4A", "4B", "4C", "5", "6", "13", "23", "35", "U1", "NU1", "U1X", "U5", "NU5", "U5X"]
+  if sid in obc_sids:
+    op = "OBC"
+  else:
+    op = "SOX"
+  return "http://www.oxontime.co.uk/MobileNaptan.aspx?t=stoppointsdetails&vc="+sid+"&Direction="+direction+"&Operator="+op+"&format=xhtml"
+
 def trackBuses(sid,direction):
-  listurl = "http://www.oxontime.co.uk/MobileNaptan.aspx?t=stoppointsdetails&vc="+sid+"&Direction="+direction+"&Operator=SOX&format=xhtml"
+  listurl = busURL(sid,direction)
 
   buses = {'type':'FeatureCollection', 'features':[]}
   due_buses = [[],[]]

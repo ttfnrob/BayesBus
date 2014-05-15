@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"geometry": {"type": "Point", "coordinates": [-1.2880066612651366, 51.78364877726974]}, "type": "Feature", "properties": {"destination": "City Centre", "service": "6", "approaching": {"name": "Elmthorpe Road", "area": "Lower Wolvercote"}}}]}

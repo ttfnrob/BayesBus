@@ -48,9 +48,7 @@ def index():
 
 # launch
 if __name__ == "__main__":
-    threading.Thread(target=mycron, args=["S1"]).start()
     threading.Thread(target=mycron, args=["S2"]).start()
-    threaded_ids.append("S1")
     threaded_ids.append("S2")
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
