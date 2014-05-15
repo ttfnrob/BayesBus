@@ -1,1 +1,1 @@
-{"type": "FeatureCollection", "features": []}
+{"type": "FeatureCollection", "features": [{"geometry": {"type": "Point", "coordinates": [-1.4928870876833888, 51.784540106143233]}, "type": "Feature", "properties": {"destination": "Carterton", "service": "S2", "approaching": {"name": "Bus Garage", "area": "Witney"}}}]}

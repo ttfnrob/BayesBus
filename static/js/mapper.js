@@ -10,19 +10,19 @@ function parseGeoJSON(text,sid,direction) {
   var json = JSON.parse(text);
 
   if (direction==="1") {
-    var dirlab = " +";
-  } else if (direction==="2") {
     var dirlab = " -";
+  } else if (direction==="2") {
+    var dirlab = " +";
   } else {
     var dirlab = "";
   }
 
   if (sid==="S1") {
-    var icon = 'static/img/bus_purple.png';
+    var icon = '/static/img/bus_purple.png';
   } else if (sid==="S2") {
-    var icon = 'static/img/bus_blue.png';
+    var icon = '/static/img/bus_blue.png';
   } else {
-    var icon = 'static/img/bus_black.png';
+    var icon = '/static/img/bus_black.png';
   }
 
   options = {
@@ -44,7 +44,7 @@ function loadGeoJSON(sid) {
   var ts = Math.floor(Date.now()/1000);
 
   var xhr = new XMLHttpRequest();
-  url = 'static/data/'+sid+'_1.json?ts='+ts;
+  url = '/static/data/'+sid+'_1.json?ts='+ts;
   xhr.open('GET', url, true);
   xhr.onload = function() {
     parseGeoJSON(this.responseText,sid,"1");
@@ -52,7 +52,7 @@ function loadGeoJSON(sid) {
   xhr.send();
 
   var xhr = new XMLHttpRequest();
-  url = 'static/data/'+sid+'_2.json?ts='+ts;
+  url = '/static/data/'+sid+'_2.json?ts='+ts;
   xhr.open('GET', url, true);
   xhr.onload = function() {
     parseGeoJSON(this.responseText,sid,"2");
@@ -63,8 +63,7 @@ function loadGeoJSON(sid) {
 function loadData() {
   // Clear markers and load a GeoJSON
   clearOverlays();
-  loadGeoJSON('S1');
-  loadGeoJSON('S2');
+  loadGeoJSON(tracking_service);
   setTimeout(loadData,10000);
 }
 

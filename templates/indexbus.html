@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block title %} - Map{% endblock %}
 {% block header %}
-    <link href="static/css/main.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet">
     <script>
-      var tracking_service = "S2";
+      var tracking_service = '{{sid}}';
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src="static/js/geoJSON.js"></script>
-    <script src="static/js/mapper.js"></script>
-    <script src="static/js/markerlabels.js"></script>
+    <script src="../static/js/geoJSON.js"></script>
+    <script src="../static/js/mapper.js"></script>
+    <script src="../static/js/markerlabels.js"></script>
 {% endblock %}
 
 {% block content %}

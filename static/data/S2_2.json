@@ -1,1 +1,1 @@
-{"type": "FeatureCollection", "features": []}
+{"type": "FeatureCollection", "features": [{"geometry": {"type": "Point", "coordinates": [-1.5040338932020723, 51.790063850542502]}, "type": "Feature", "properties": {"destination": "Oxford via Witney", "service": "S2", "approaching": {"name": "Windrush Valley", "area": "Witney"}}}, {"geometry": {"type": "Point", "coordinates": [-1.2651806055173309, 51.770604493931465]}, "type": "Feature", "properties": {"destination": "City Centre", "service": "S2", "approaching": {"name": "Lathbury Road west", "area": "Oxford"}}}]}

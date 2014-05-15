@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"geometry": {"type": "Point", "coordinates": [-1.3174726929089402, 51.821716482114972]}, "type": "Feature", "properties": {"destination": "Charlbury", "service": "S3", "approaching": {"name": "The Royal Sun PH", "area": "Begbroke"}}}]}

@@ -6,13 +6,14 @@ from tracker import *
 from bs4 import BeautifulSoup
 from nocache import nocache
 import time, threading
-from multiprocessing import Pool
 
 # initialization
 app = Flask(__name__)
 app.config.update(
     DEBUG = True
 )
+
+threaded_ids = []
 
 def ended():
   print "Cron ended!"
@@ -32,22 +33,24 @@ def favicon():
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@app.route('/<sid>/')
+@nocache
+def indexbus(sid):
+    if sid not in threaded_ids:
+      threading.Thread(target=mycron, args=[sid]).start()
+      threaded_ids.append(sid)
+    return render_template('indexbus.html', sid=sid)
+
 @app.route("/")
 @nocache
 def index():
     return render_template('index.html')
 
-@app.route("/process")
-@nocache
-def process():
-    buses = trackBuses("S1","1")
-    with open('data/S1.json', 'w') as fp:
-      json.dump(buses, fp)
-    return render_template('index.html')
-
 # launch
 if __name__ == "__main__":
-    pool = Pool(processes=1)
-    result = pool.apply_async(mycron, ["S1"], callback=ended)
+    threading.Thread(target=mycron, args=["S1"]).start()
+    threading.Thread(target=mycron, args=["S2"]).start()
+    threaded_ids.append("S1")
+    threaded_ids.append("S2")
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
